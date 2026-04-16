@@ -252,6 +252,39 @@ flex-direction:column;
 .catalogo{
 flex:1;
 }
+  /* BOTÓN HAMBURGUESA */
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+margin-left:auto;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+}
 </style>
 </head>
 
@@ -260,6 +293,8 @@ flex:1;
 <nav>
 
 <div class="logo">YO CHIL</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
 <ul>
 <li><a href="index.html">Inicio</a></li>
@@ -338,6 +373,10 @@ Plantas utilizadas para tratar heridas, quemaduras e irritaciones en la piel.
 <footer>
 Proyecto Yo Chil · Herbario digital
 </footer>
-
+<script>
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
 </body>
 </html>
