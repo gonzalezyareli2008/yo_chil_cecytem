@@ -9,18 +9,21 @@
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:'Inter',sans-serif;
-background:#1b521f; /* ← VERDE */
+background:#1b521f;
 color:#1f2933;
 min-height:100vh;
 display:flex;
 flex-direction:column;
 }
+
 .hero{
 background:linear-gradient(120deg,#f4f8f3,#e6f0e8);
-flex:1; /* ← ESTO ES CLAVE */
+flex:1;
 }
+
 /* NAVBAR */
 nav{
 position:fixed;
@@ -62,8 +65,16 @@ transition:.25s;
 nav a:hover{
 background:rgba(255,255,255,0.18);
 }
-/* HERO */
 
+/* BOTÓN HAMBURGUESA */
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* HERO */
 .hero{
 min-height:100vh;
 display:grid;
@@ -101,6 +112,7 @@ font-size:14px;
 font-weight:600;
 border:none;
 cursor:pointer;
+transition:.3s ease;
 }
 
 .primary{
@@ -115,8 +127,12 @@ color:#2d6a4f;
 border:1px solid #d9e4dd;
 }
 
-/* HERO IMAGE */
+.btn:hover{
+transform:translateY(-4px) scale(1.03);
+box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
 
+/* HERO IMAGE */
 .hero-image{
 position:relative;
 display:flex;
@@ -134,6 +150,7 @@ transition:.4s;
 .hero-image img:hover{
 transform:scale(1.02);
 }
+
 .leaf{
 position:absolute;
 width:120px;
@@ -144,7 +161,6 @@ opacity:.8;
 .leaf2{bottom:-40px;left:-20px}
 
 /* FOOTER */
-
 footer{
 width:100%;
 padding:30px 15px;
@@ -155,6 +171,7 @@ font-size:14px;
 margin-top:auto;
 }
 
+/* TABLET */
 @media(max-width:900px){
 
 .hero{
@@ -182,21 +199,9 @@ margin-top:40px;
 .hero-image img{
 width:85%;
 }
-
-
-
-.logo{
-font-size:26px;
-}
-/* BOTÓN HAMBURGUESA */
-.menu-toggle{
-display:none;
-font-size:28px;
-color:white;
-cursor:pointer;
 }
 
-/* MOBILE */
+/* CELULAR */
 @media(max-width:768px){
 
 .menu-toggle{
@@ -225,10 +230,7 @@ display:flex;
 }
 }
 
-/* MOBILE */
-@media(max-width:768px){
-
-
+/* CELULAR PEQUEÑO */
 @media(max-width:600px){
 
 nav{
@@ -240,18 +242,12 @@ nav ul{
 flex-wrap:wrap;
 justify-content:center;
 }
+
 .hero div:first-child{
 max-width:500px;
 }
 }
-.btn{
-transition:.3s ease;
-}
 
-.btn:hover{
-transform:translateY(-4px) scale(1.03);
-box-shadow:0 12px 25px rgba(0,0,0,0.2);
-}
 </style>
 </head>
 
@@ -290,14 +286,13 @@ Sobre el proyecto
 <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/08/Depositphotos_12109628_xl-2015-1024x683.jpg">
 </div>
 </section>
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
 <script>
 function toggleMenu(){
 document.querySelector("nav ul").classList.toggle("active");
 }
 </script>
-<footer>
-Proyecto Yo Chil · Herbario digital
-</footer>
-
 </body>
 </html>
