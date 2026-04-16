@@ -5,18 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yo Chil</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:'Inter',sans-serif;
-background:#1b521f; /* ← VERDE */
+background:#1b521f;
 color:#1f2933;
 min-height:100vh;
 display:flex;
 flex-direction:column;
 }
+
 /* NAVBAR */
 nav{
 position:fixed;
@@ -58,6 +59,7 @@ transition:.25s;
 nav a:hover{
 background:rgba(255,255,255,0.18);
 }
+
 /* HERO */
 
 .hero{
@@ -218,6 +220,8 @@ font-size:14px;
 margin-top:auto;
 }
 
+/* RESPONSIVE */
+
 @media(max-width:900px){
 
 .hero{
@@ -282,16 +286,12 @@ font-size:26px;
 }
 
 }
+
+/* 🔥 ARREGLADO: NO romper navbar */
 @media(max-width:600px){
 
 nav{
-flex-direction:column;
-gap:10px;
-}
-
-nav ul{
-flex-wrap:wrap;
-justify-content:center;
+flex-direction:row;
 }
 
 .hero{
@@ -313,7 +313,52 @@ min-height:200px;
 .image-small{
 min-height:120px;
 }
+
 }
+
+/* ========================= */
+/* HAMBURGUESA */
+/* ========================= */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+flex-direction:row;
+}
+
+/* ocultar menú */
+nav ul{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+/* mostrar menú */
+nav ul.active{
+display:flex;
+}
+
+}
+
 </style>
 </head>
 
@@ -321,6 +366,7 @@ min-height:120px;
 
 <nav>
 <div class="logo">YO CHIL</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <ul>
 <li><a href="index.html">Inicio</a></li>
 <li><a href="catalogo.html">Glosario</a></li>
@@ -425,6 +471,10 @@ min-height:120px;
 <footer>
 Proyecto Yo Chil · Herbario digital
 </footer>
-
+<script>
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
 </body>
 </html>
