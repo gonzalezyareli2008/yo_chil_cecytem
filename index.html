@@ -194,7 +194,41 @@ gap:20px;
 .logo{
 font-size:26px;
 }
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
 
+/* MOBILE */
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+flex-direction:row;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+}
 }
 @media(max-width:600px){
 
@@ -226,6 +260,7 @@ box-shadow:0 12px 25px rgba(0,0,0,0.2);
 
 <nav>
 <div class="logo">YO CHIL</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <ul>
 <li><a href="index.html">Inicio</a></li>
 <li><a href="catalogo.html">Glosario</a></li>
@@ -256,7 +291,11 @@ Sobre el proyecto
 <img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/08/Depositphotos_12109628_xl-2015-1024x683.jpg">
 </div>
 </section>
-
+<script>
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
 <footer>
 Proyecto Yo Chil · Herbario digital
 </footer>
