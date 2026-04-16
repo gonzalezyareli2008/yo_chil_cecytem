@@ -7,7 +7,6 @@
 <title>Catálogo · Yo Chil</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
 <style>
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -18,7 +17,7 @@ font-family:'Inter',sans-serif;
 /* IMAGEN DE FONDO LOCAL */
 background:
 linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
-url("FONDO.jpg"); /* ← cambia la ruta a tu imagen */
+url("FONDO.jpg");
 
 /* AJUSTES */
 background-size:cover;
@@ -69,6 +68,7 @@ transition:.25s;
 nav a:hover{
 background:rgba(255,255,255,0.18);
 }
+
 /* HEADER */
 .header{
 padding:140px 5% 70px 5%;
@@ -94,6 +94,7 @@ text-align:justify;
 /* CATALOGO */
 .catalogo{
 padding:40px 5% 120px 5%;
+flex:1;
 }
 
 .grid{
@@ -117,6 +118,7 @@ transition:all .4s ease;
 cursor:pointer;
 overflow:hidden;
 }
+
 @media(max-width:600px){
 
 .grid{
@@ -136,6 +138,7 @@ font-size:14px;
 }
 
 }
+
 /* brillo verde */
 
 .card::before{
@@ -166,7 +169,7 @@ box-shadow:
 /* ICONO */
 
 .icon{
-text-align: center;
+text-align:center;
 font-size:52px;
 margin-bottom:20px;
 color:#2d6a4f;
@@ -174,11 +177,9 @@ animation:leafFloat 4s ease-in-out infinite;
 }
 
 @keyframes leafFloat{
-
 0%{transform:translateY(0) rotate(0deg)}
 50%{transform:translateY(-8px) rotate(4deg)}
 100%{transform:translateY(0) rotate(0deg)}
-
 }
 
 /* TITULOS */
@@ -225,49 +226,56 @@ font-size:16px;
 }
 
 }
+
+/* CAJA HEADER */
+
 .header-box{
 max-width:800px;
 margin:auto;
 padding:40px 35px;
 
-/* efecto vidrio */
-background:rgba(255, 255, 255, 0.826);
+background:rgba(255,255,255,0.826);
 backdrop-filter:blur(12px);
 -webkit-backdrop-filter:blur(12px);
 
 border-radius:20px;
 
-/* sombra elegante */
 box-shadow:0 10px 30px rgba(0,0,0,0.15);
 
-/* borde sutil */
-border:1px solid rgba(255, 255, 255, 0.76);
+border:1px solid rgba(255,255,255,0.76);
 }
+
+/* ESTRUCTURA */
+
 body{
 min-height:100vh;
 display:flex;
 flex-direction:column;
 }
 
-.catalogo{
-flex:1;
-}
-  /* BOTÓN HAMBURGUESA */
+/* ========================= */
+/* HAMBURGUESA (ARREGLADO) */
+/* ========================= */
+
 .menu-toggle{
 display:none;
 font-size:28px;
 color:white;
 cursor:pointer;
-margin-left:auto;
 }
 
 /* MOBILE */
 @media(max-width:768px){
 
+nav{
+flex-direction:row;
+}
+
 .menu-toggle{
 display:block;
 }
 
+/* OCULTA MENU */
 nav ul{
 position:absolute;
 top:100%;
@@ -281,11 +289,15 @@ padding:20px 0;
 display:none;
 }
 
+/* CUANDO SE ACTIVA */
 nav ul.active{
 display:flex;
 }
+
 }
+
 </style>
+
 </head>
 
 <body>
