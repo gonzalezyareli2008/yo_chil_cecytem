@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YO CHIL - Plantas Respiratorias</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+font-family:'Inter',sans-serif;
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:#1f2933;
+}
+
+footer{
+width:100%;
+padding:30px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+margin-top:40px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+z-index:100;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:30px;
+font-weight:700;
+letter-spacing:3px;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+font-size:15px;
+padding:6px 10px;
+border-radius:8px;
+transition:.25s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+.titulo{
+text-align:center;
+margin-top:120px;
+padding:0 20px;
+font-family:'Playfair Display',serif;
+font-size:clamp(50px,7vw,70px);
+color:#1d3415;
+letter-spacing:1px;
+text-shadow:0 4px 12px rgba(0,0,0,0.1);
+animation:fadeUp 1s ease;
+}
+
+.titulo::after{
+content:"";
+display:block;
+width:60%;
+height:4px;
+margin:10px auto 0;
+background:linear-gradient(90deg,#2d6a4f,#52b788);
+border-radius:10px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.card h2{
+margin-top:10px;
+font-size:20px;
+font-family:'Playfair Display',serif;
+}
+
+.scientific{
+font-style:italic;
+color:#555;
+font-size:14px;
+}
+
+.mazahua{
+color:#2f7a4d;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.icons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.icons button{
+background:#e6f0e9;
+border:none;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+transition:.3s;
+}
+
+.icons button:hover{
+background:#2f7a4d;
+color:white;
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(4px);
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:2000;
+}
+
+.modal-content{
+background:linear-gradient(135deg,#ffffff,#f3fdf6);
+padding:30px;
+border-radius:20px;
+width:100%;
+max-width:650px;
+position:relative;
+text-align:justify;
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+animation:fadeIn .35s ease;
+border:2px solid #d4f2dc;
+}
+
+.modal h3{
+color:#2f7a4d;
+margin-bottom:10px;
+font-size:22px;
+border-bottom:2px solid #d4f2dc;
+padding-bottom:5px;
+}
+
+.close{
+position:absolute;
+right:15px;
+top:10px;
+font-size:22px;
+cursor:pointer;
+background:#e6f0e9;
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+transition:.3s;
+}
+
+.close:hover{
+background:#2f7a4d;
+color:white;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.9)}
+to{opacity:1;transform:scale(1)}
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+@media(max-width:768px){
+
+.grid{
+grid-template-columns:1fr;
+padding:15px;
+gap:15px;
+}
+
+.card{
+padding:15px;
+border-radius:20px;
+}
+
+.card img{
+height:180px;
+}
+
+.icons{
+gap:10px;
+flex-wrap:wrap;
+}
+
+.icons button{
+padding:10px;
+font-size:16px;
+}
+
+.menu-toggle{display:block;}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+}
+
+@media(max-width:600px){
+.titulo{
+font-size:42px;
+line-height:1.2;
+}
+
+.titulo::after{
+width:80%;
+}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="logo">YO CHIL</div>
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+</nav>
+
+<h1 class="titulo">Plantas Respiratorias</h1>
+
+<div class="grid">
+
+<div class="card">
+<img src="eucalipto.jpg">
+<h2>Eucalipto</h2>
+<p class="scientific">Eucalyptus globulus</p>
+<p class="mazahua">Xita yo̱to̱</p>
+<div class="icons">
+<button onclick="openModal('e1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('e2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('e3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('e4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<div class="card">
+<img src="gordolobo.jpeg">
+<h2>Gordolobo</h2>
+<p class="scientific">Verbascum thapsus</p>
+<p class="mazahua">Yo ts'i</p>
+<div class="icons">
+<button onclick="openModal('g1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('g2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('g3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('g4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<div class="card">
+<img src="menta.jpg">
+<h2>Menta</h2>
+<p class="scientific">Mentha spicata</p>
+<p class="mazahua">Menta</p>
+<div class="icons">
+<button onclick="openModal('m1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('m2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('m3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('m4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+</div>
+
+<div id="e1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('e1')">&times;</span><h3>Lenguaje denotativo</h3>Árbol medicinal conocido por sus hojas aromáticas, utilizadas para aliviar afecciones respiratorias.</div></div>
+<div id="e2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('e2')">&times;</span><h3>Descripción literaria</h3>El eucalipto desprende un aroma fresco que parece limpiar el aire y despejar el pecho.</div></div>
+<div id="e3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('e3')">&times;</span><h3>Usos medicinales</h3>Se utiliza en vaporizaciones e infusiones para aliviar la tos, descongestionar y mejorar la respiración.</div></div>
+<div id="e4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('e4')">&times;</span><h3>Importancia cultural</h3>Es una de las plantas más utilizadas en remedios caseros para tratar gripa y problemas respiratorios.</div></div>
+
+<div id="g1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('g1')">&times;</span><h3>Lenguaje denotativo</h3>Planta herbácea de hojas suaves y flores amarillas, conocida por sus propiedades expectorantes.</div></div>
+<div id="g2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('g2')">&times;</span><h3>Descripción literaria</h3>Sus flores amarillas guardan el calor del sol y alivian el pecho en tiempos de frío.</div></div>
+<div id="g3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('g3')">&times;</span><h3>Usos medicinales</h3>Se emplea en infusiones para aliviar la tos, expulsar flemas y calmar irritaciones de garganta.</div></div>
+<div id="g4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('g4')">&times;</span><h3>Importancia cultural</h3>Forma parte de muchos remedios tradicionales usados en comunidades rurales durante la temporada de frío.</div></div>
+
+<div id="m1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m1')">&times;</span><h3>Lenguaje denotativo</h3>Planta aromática de hojas verdes y olor intenso, ampliamente utilizada en medicina tradicional.</div></div>
+<div id="m2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m2')">&times;</span><h3>Descripción literaria</h3>La menta refresca el aliento y deja una sensación de ligereza que parece abrir el pecho.</div></div>
+<div id="m3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m3')">&times;</span><h3>Usos medicinales</h3>Ayuda a descongestionar las vías respiratorias y aliviar molestias leves de garganta.</div></div>
+<div id="m4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m4')">&times;</span><h3>Importancia cultural</h3>Es común en los hogares para preparar infusiones y vapores durante resfriados.</div></div>
+
+<script>
+function openModal(id){
+document.getElementById(id).style.display='flex';
+}
+
+function closeModal(id){
+document.getElementById(id).style.display='none';
+}
+
+window.onclick=function(e){
+let modals=document.querySelectorAll('.modal');
+modals.forEach(modal=>{
+if(e.target==modal){
+modal.style.display='none';
+}
+});
+}
+
+function toggleMenu(){
+document.querySelector('nav ul').classList.toggle('active');
+}
+</script>
+
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+
+</body>
+</html>

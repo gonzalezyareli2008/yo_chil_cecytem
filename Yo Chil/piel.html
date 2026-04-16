@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YO CHIL - Cuidado de la piel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+font-family:'Inter',sans-serif;
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:#1f2933;
+}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+z-index:100;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:30px;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+}
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* TITULO */
+.titulo{
+text-align:center;
+margin-top:120px;
+font-family:'Playfair Display',serif;
+font-size:clamp(50px,7vw,70px);
+color:#1d3415;
+text-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.titulo::after{
+content:"";
+display:block;
+width:60%;
+height:4px;
+margin:10px auto;
+background:linear-gradient(90deg,#2d6a4f,#52b788);
+border-radius:10px;
+}
+
+/* GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr); /* 3 columnas fijas */
+gap:25px;
+padding:25px;
+}
+
+/* TABLET */
+@media(max-width:1024px){
+.grid{
+grid-template-columns:repeat(2,1fr); /* 2 por fila */
+}
+}
+
+/* MOVIL */
+@media(max-width:768px){
+.grid{
+grid-template-columns:1fr; /* 1 por fila */
+padding:15px;
+}
+}
+
+/* TARJETAS */
+.card{
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.card h2{
+margin-top:10px;
+font-family:'Playfair Display',serif;
+}
+
+.scientific{font-style:italic;color:#555}
+.mazahua{color:#2f7a4d}
+
+/* ICONOS */
+.icons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.icons button{
+background:#e6f0e9;
+border:none;
+padding:14px; /* ⬅️ antes 10px */
+border-radius:12px; /* un poquito más redondo */
+cursor:pointer;
+font-size:20px; /* ⬅️ icono más grande */
+transition:.3s;
+min-width:50px; /* mantiene tamaño uniforme */
+height:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.icons button:hover{
+background:#2f7a4d;
+color:white;
+}
+
+/* MODALES BONITOS */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(4px);
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:2000;
+}
+
+.modal-content{
+background:linear-gradient(135deg,#ffffff,#f3fdf6);
+padding:40px; /* ⬅️ más espacio interno */
+border-radius:25px;
+width:90%;
+max-width:800px; /* ⬅️ más ancho que antes */
+position:relative;
+text-align:justify;
+box-shadow:0 25px 50px rgba(0,0,0,0.3);
+animation:fadeIn .35s ease;
+border:2px solid #d4f2dc;
+font-size:19px; /* ⬅️ texto más grande */
+line-height:1.7;
+}
+
+.modal h3{
+color:#2f7a4d;
+margin-bottom:15px;
+font-size:26px; /* ⬅️ más grande */
+border-bottom:2px solid #d4f2dc;
+padding-bottom:8px;
+}
+
+.close{
+position:absolute;
+right:20px;
+top:15px;
+font-size:24px;
+cursor:pointer;
+background:#e6f0e9;
+width:40px;
+height:40px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+transition:.3s;
+}
+/* FOOTER */
+footer{
+margin-top:auto;
+padding:30px;
+background:#1b521f;
+color:white;
+text-align:center;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.menu-toggle{display:block;}
+
+nav ul{
+display:none;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+padding:20px 0;
+}
+
+nav ul.active{display:flex;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="logo">YO CHIL</div>
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+</nav>
+
+<h1 class="titulo">Cuidado de la piel</h1>
+
+<div class="grid">
+
+<!-- SABILA -->
+<div class="card">
+<img src="sabila.jpeg">
+<h2>Sábila</h2>
+<p class="scientific">Aloe vera</p>
+<p class="mazahua">Zábila</p>
+<div class="icons">
+<button onclick="openModal('s1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('s2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('s3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('s4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- MANZANILLA -->
+<div class="card">
+<img src="manzanilla.jpg">
+<h2>Manzanilla</h2>
+<p class="scientific">Matricaria chamomilla</p>
+<p class="mazahua">Manzanilla</p>
+<div class="icons">
+<button onclick="openModal('m1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('m2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('m3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('m4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- ARNICA -->
+<div class="card">
+<img src="arnica.jpg">
+<h2>Árnica</h2>
+<p class="scientific">Arnica montana</p>
+<p class="mazahua">Árnica</p>
+<div class="icons">
+<button onclick="openModal('a1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('a2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('a3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('a4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- NOPAL -->
+<div class="card">
+<img src="WhatsApp Image 2026-03-11 at 20.07.08.jpeg">
+<h2>Nopal</h2>
+<p class="scientific">Opuntia spp.</p>
+<p class="mazahua">ndaa</p>
+<div class="icons">
+<button onclick="openModal('n1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('n2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('n3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('n4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+</div>
+
+<!-- MODALES COMPLETOS (SIN RECORTAR NADA) -->
+
+<div id="s1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+La sábila (Aloe vera) es una planta suculenta caracterizada por sus hojas gruesas y carnosas que contienen un gel transparente rico en vitaminas, minerales, enzimas y compuestos con propiedades antiinflamatorias, cicatrizantes e hidratantes. Es ampliamente utilizada en la medicina natural y en productos cosméticos.
+</div></div>
+
+<div id="s2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s2')">&times;</span>
+<h3>Descripción literaria</h3>
+En el interior de sus hojas verdes habita un cristal vegetal que guarda la frescura de la tierra. Su esencia calma la piel como un susurro suave, devolviéndole la armonía perdida y recordando la pureza de la naturaleza.
+</div></div>
+
+<div id="s3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se emplea principalmente para tratar quemaduras leves, irritaciones, resequedad, heridas superficiales y picaduras. Su gel actúa como hidratante natural, regenerador celular y calmante, siendo muy útil en el cuidado cotidiano de la piel.
+</div></div>
+
+<div id="s4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s4')">&times;</span>
+<h3>Importancia cultural</h3>
+La sábila ha sido utilizada desde tiempos ancestrales como un remedio natural dentro de diversas culturas. En comunidades mexicanas, su presencia en el hogar simboliza protección, salud y bienestar, formando parte del conocimiento tradicional transmitido de generación en generación.
+</div></div>
+<!-- MANZANILLA -->
+<div id="m1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+La manzanilla (Matricaria chamomilla) es una planta herbácea con flores pequeñas de color blanco y centro amarillo. Contiene aceites esenciales y compuestos con propiedades antiinflamatorias, calmantes y antisépticas, lo que la hace útil en la medicina tradicional.
+</div></div>
+
+<div id="m2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m2')">&times;</span>
+<h3>Descripción literaria</h3>
+Pequeña flor que florece como un reflejo del sol, llevando en sus pétalos la calma del campo. Su aroma envuelve con suavidad y transmite serenidad, como un abrazo tranquilo de la naturaleza.
+</div></div>
+
+<div id="m3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se utiliza en infusiones, compresas o lavados para aliviar irritaciones, inflamaciones, enrojecimiento y sensibilidad en la piel. También es conocida por sus efectos relajantes y calmantes.
+</div></div>
+
+<div id="m4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m4')">&times;</span>
+<h3>Importancia cultural</h3>
+La manzanilla es una de las plantas más utilizadas en la medicina tradicional mexicana. Su accesibilidad y eficacia la convierten en un elemento esencial en los hogares, siendo símbolo de cuidado, calma y tradición.
+</div></div>
+<!-- ARNICA -->
+<div id="a1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+La árnica (Arnica montana o Heterotheca inuloides en México) es una planta medicinal conocida por sus propiedades antiinflamatorias y analgésicas. Se utiliza principalmente de forma tópica para tratar golpes y lesiones.
+</div></div>
+
+<div id="a2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a2')">&times;</span>
+<h3>Descripción literaria</h3>
+Como un pequeño sol que nace entre montañas, la árnica ilumina el camino de la recuperación. Su fuerza natural abraza el dolor y lo disuelve con la calidez de la tierra.
+</div></div>
+
+<div id="a3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se emplea para aliviar golpes, moretones, inflamaciones, torceduras y dolores musculares. Generalmente se utiliza en forma de pomadas, aceites o infusiones aplicadas externamente.
+</div></div>
+
+<div id="a4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a4')">&times;</span>
+<h3>Importancia cultural</h3>
+Dentro de la herbolaria tradicional mexicana, la árnica ocupa un lugar importante como remedio natural. Es considerada parte del conocimiento ancestral que conecta la salud con la naturaleza y la identidad cultural.
+</div></div>
+
+<!-- NOPAL -->
+<div id="n1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+El nopal (Opuntia spp.) es un cactus originario de América que posee un alto contenido de agua, fibra y antioxidantes. Sus pencas contienen mucílagos que ayudan a hidratar y proteger la piel.
+</div></div>
+
+<div id="n2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n2')">&times;</span>
+<h3>Descripción literaria</h3>
+El nopal crece firme en tierras áridas, guardando en su interior la fuerza de la vida. Su esencia enseña resistencia, mostrando que incluso en la dificultad florece la vitalidad.
+</div></div>
+
+<div id="n3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se utiliza para hidratar la piel, favorecer su regeneración, disminuir la inflamación y aliviar irritaciones leves. También es empleado en tratamientos naturales para mantener la piel saludable.
+</div></div>
+
+<div id="n4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n4')">&times;</span>
+<h3>Importancia cultural</h3>
+El nopal es un símbolo nacional de México y forma parte fundamental de la identidad cultural. Además de su uso alimenticio, representa sustento, resistencia y conexión con la tierra en diversas comunidades.
+</div></div>
+
+<script>
+function openModal(id){
+document.getElementById(id).style.display="flex";
+}
+
+function closeModal(id){
+document.getElementById(id).style.display="none";
+}
+
+window.onclick=function(e){
+document.querySelectorAll(".modal").forEach(m=>{
+if(e.target==m){m.style.display="none";}
+});
+}
+
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
+
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+
+</body>
+</html>

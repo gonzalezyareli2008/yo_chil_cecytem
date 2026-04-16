@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yo Chil</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:#1b521f; /* ← VERDE */
+color:#1f2933;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+z-index:1000;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:26px;
+font-weight:700;
+letter-spacing:2px;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+font-size:14px;
+padding:6px 10px;
+border-radius:8px;
+transition:.25s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:120px 8% 60px;
+background:linear-gradient(120deg,#f4f8f3,#e6f0e8);
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:clamp(55px,6vw,90px);
+line-height:1.05;
+color:#1b4332;
+margin-bottom:35px;
+text-align:center;
+max-width:900px;
+}
+
+.hero-grid{
+width:100%;
+max-width:1200px;
+display:flex;
+flex-direction:column;
+gap:40px;
+}
+
+.hero-block{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+align-items:center;
+}
+
+.hero-block.even .hero-image{
+order:2;
+}
+
+.hero-block.even .hero-card{
+order:1;
+}
+
+.hero-main{
+background:rgba(255,255,255,0.96);
+padding:34px;
+border-radius:28px;
+box-shadow:0 24px 60px rgba(0,0,0,0.08);
+}
+
+.hero-intro{
+font-size:20px;
+line-height:1.9;
+color:#3b4f40;
+margin-top:8px;
+}
+
+.hero-card{
+background:white;
+padding:28px;
+border-radius:24px;
+box-shadow:0 18px 40px rgba(0,0,0,0.06);
+}
+
+.hero-card h2{
+font-size:24px;
+color:#1b4332;
+margin-bottom:14px;
+}
+
+.hero-card p{
+font-size:17px;
+line-height:1.8;
+color:#4a5d52;
+}
+
+.hero-image{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+border-radius:24px;
+box-shadow:0 24px 50px rgba(0,0,0,0.12);
+}
+
+.hero-image.large{
+min-height:300px;
+}
+
+.hero-image.small{
+min-height:180px;
+}
+
+.hero-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:block;
+transition:transform .4s ease;
+}
+
+.hero-image img:hover{
+transform:scale(1.05);
+}
+
+.table-card{
+padding:0;
+overflow:hidden;
+margin-top:30px;
+}
+
+.team-table{
+width:100%;
+border-collapse:separate;
+border-spacing:0;
+}
+
+.team-table th,
+.team-table td{
+padding:18px 20px;
+}
+
+.team-table thead th{
+background:#2d6a4f;
+color:white;
+font-weight:700;
+text-align:left;
+}
+
+.team-table tbody tr{
+background:white;
+}
+
+.team-table tbody tr + tr td{
+border-top:1px solid #e6f0e8;
+}
+
+.team-table tbody tr:hover{
+background:#f4f8f3;
+}
+
+.team-table td{
+color:#4a5d52;
+}
+
+/* FOOTER */
+
+footer{
+width:100%;
+padding:30px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+margin-top:auto;
+}
+
+@media(max-width:900px){
+
+.hero{
+text-align:center;
+padding:140px 6% 60px 6%;
+}
+
+.hero-grid{
+grid-template-columns:1fr;
+}
+
+.hero-block{
+grid-template-columns:1fr;
+gap:24px;
+}
+
+.hero-block.even .hero-image,
+.hero-block.even .hero-card{
+order:initial;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero-left{
+align-items:center;
+text-align:center;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.image-large{
+min-height:240px;
+}
+
+.image-small{
+min-height:140px;
+}
+
+.hero-image{
+margin:0 auto;
+}
+
+.hero-image img{
+width:100%;
+max-width:100%;
+}
+
+nav{
+padding:16px 6%;
+}
+
+nav ul{
+gap:20px;
+}
+
+.logo{
+font-size:26px;
+}
+
+}
+@media(max-width:600px){
+
+nav{
+flex-direction:column;
+gap:10px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero{
+padding:120px 5% 50px 5%;
+}
+
+.hero-card{
+padding:20px;
+}
+
+.hero-block{
+row-gap:20px;
+}
+
+.image-large{
+min-height:200px;
+}
+
+.image-small{
+min-height:120px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">YO CHIL</div>
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<h1>Proyecto "Yo Chil"</h1>
+
+<div class="hero-grid">
+  <div class="hero-block">
+    <div class="hero-image large">
+      <img src="https://cdn.sanity.io/images/idphpoec/production/8f3a82865b7dd057f6762dcf6786f5725366b0c7-1800x1200.jpg?fit=max&auto=format" alt="Herbario digital de plantas medicinales">
+    </div>
+    <div class="hero-card hero-main">
+      <h2>Una experiencia visual para el herbario digital</h2>
+      <p class="hero-intro">Yo Chil reúne el saber ancestral de las plantas medicinales en una presentación clara, colorida y fácil de navegar. El diseño está pensado para resaltar el contenido cultural y la información de cada planta de forma atractiva.</p>
+    </div>
+  </div>
+
+  <div class="hero-block even">
+    <div class="hero-card">
+      <h2>Propósito</h2>
+      <p>Crear una plataforma digital accesible desde teléfonos móviles que reúna información sobre diversas plantas medicinales y sus usos tradicionales para aliviar distintos malestares.</p>
+    </div>
+    <div class="hero-image small">
+      <img src="https://www.eluniversal.com.mx/resizer/v2/MH4YQUTJEFAJXCCKCLYPJW2JIY.jpg?auth=c4a6724d46cccc523a147ac7e0c9c419243a426190e376bf76f2dc4d212f8a52&smart=true&height=666" alt="Plantas tradicionales">
+    </div>
+  </div>
+
+  <div class="hero-block">
+    <div class="hero-image small">
+      <img src="https://media.admagazine.com/photos/618a68c758ac69e38abb61ec/master/w_1600%2Cc_limit/63400.jpg" alt="Cultura mazahua y medicina natural">
+    </div>
+    <div class="hero-card">
+      <h2>Objetivo</h2>
+      <p>Difundir el conocimiento sobre plantas medicinales, facilitando su acceso a información confiable en cualquier momento y lugar.</p>
+    </div>
+  </div>
+
+  <div class="hero-block even">
+    
+    <div class="hero-image small">
+        <img src="https://escuelafarmacia.com/wp-content/uploads/plantas-medicinales.jpg" alt="">
+    </div>
+    <div class="hero-card">
+      <h2>Metodología</h2>
+      <p>Utilizamos técnicas de investigación etnográfica y colaborativa para recopilar y documentar el conocimiento tradicional sobre plantas medicinales.</p>
+    </div>
+
+    
+   
+  </div>
+
+  <div class="hero-block">
+     <div class="hero-card">
+      <h2>Alcance</h2>
+      <p>Catálogo digital de plantas medicinales con información sobre propiedades, usos y cultura mazahua.</p>
+    </div>
+  </div>
+
+  <div class="hero-card table-card">
+    <table class="team-table">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Nombre</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Integrante 1</td>
+          <td>Yareli González Alvarez</td>
+        </tr>
+        <tr>
+          <td>Integrante 2</td>
+          <td>Regina Gasca Dionicio</td>
+        </tr>
+        <tr>
+          <td>Integrante 3</td>
+          <td>Alexander González González</td>
+        </tr>
+        <tr>
+          <td>Integrante 4</td>
+          <td>Emilano Cruz Hernández</td>
+        </tr>
+        <tr>
+          <td>Integrante 6</td>
+          <td>Carlos Daniel Moreno Martínez</td>
+        </tr>
+        <tr>
+          <td>Integrante 7</td>
+          <td>Alejandro Segundo Ramírez</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+
+</body>
+</html>
