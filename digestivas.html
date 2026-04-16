@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YO CHIL - Plantas Digestivas</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+/* RESET IMPORTANTE */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+/* ====================== ESTILO GENERAL ====================== */
+body{
+font-family:'Inter',sans-serif;
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:#1f2933;
+}
+
+/* ====================== NAVBAR ====================== */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+z-index:1000;
+}
+
+.logo{
+font-size:26px;
+font-weight:700;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:14px;
+padding:6px 10px;
+border-radius:8px;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+
+/* ====================== TITULO ====================== */
+.titulo{
+text-align:center;
+margin-top:120px;
+padding:0 20px;
+font-family:'Playfair Display',serif;
+font-size:clamp(50px,7vw,70px);
+color:#1d3415;
+position:relative;
+display:block;
+letter-spacing:1px;
+text-shadow:0 4px 12px rgba(0,0,0,0.1);
+animation:fadeUp 1s ease;
+}
+
+/* línea decorativa */
+.titulo::after{
+content:"";
+display:block;
+width:60%;
+height:4px;
+margin:10px auto 0;
+background:linear-gradient(90deg,#2d6a4f,#52b788);
+border-radius:10px;
+}
+/* ====================== GRID ====================== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* ====================== TARJETAS ====================== */
+.card{
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.card h2{
+margin-top:10px;
+font-size:20px;
+}
+
+.scientific{
+font-style:italic;
+color:#555;
+font-size:14px;
+}
+
+.mazahua{
+color:#2f7a4d;
+font-size:14px;
+margin-bottom:10px;
+}
+
+/* ====================== ICONOS ====================== */
+.icons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.icons button{
+background:#e6f0e9;
+border:none;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+/* ====================== MODALES ====================== */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter: blur(4px);
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:2000;
+}
+
+.modal-content{
+background:linear-gradient(135deg,#ffffff,#f3fdf6);
+padding:30px;
+border-radius:20px;
+width:100%;
+max-width:650px;
+position:relative;
+text-align:justify;
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+animation:fadeIn .35s ease;
+border:2px solid #d4f2dc;
+}
+
+.modal h3{
+color:#2f7a4d;
+margin-bottom:10px;
+font-size:22px;
+border-bottom:2px solid #d4f2dc;
+padding-bottom:5px;
+}
+
+.close{
+position:absolute;
+right:15px;
+top:10px;
+font-size:22px;
+cursor:pointer;
+background:#e6f0e9;
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+transition:.3s;
+}
+
+.close:hover{
+background:#2f7a4d;
+color:white;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:scale(0.9);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+
+.titulo{
+font-size:42px;
+line-height:1.2;
+}
+
+.titulo::after{
+width:80%;
+}
+
+}
+
+/* ====================== FOOTER ====================== */
+footer{
+width:100%;
+padding:30px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+margin-top:40px;
+}
+ /*hamburguesa*/
+ .menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ====================== NAVBAR ====================== -->
+
+<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="logo">YO CHIL</div>
+
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+
+</nav>
+
+<section class="header">
+
+<div class="header-box">
+<!-- ====================== TITULO ====================== -->
+
+<h1 class="titulo">Plantas Digestivas</h1>
+
+<!-- ====================== TARJETAS ====================== -->
+
+<div class="grid">
+
+<!-- JENGIBRE -->
+
+<div class="card">
+
+<img src="WhatsApp Image 2026-03-11 at 20.49.37.jpeg">
+
+<h2>Jengibre</h2>
+
+<p class="scientific">Zingiber officinale</p>
+
+<p class="mazahua">Rátsi picante</p>
+
+<div class="icons">
+
+<button onclick="openModal('j1')"><i class="fa-solid fa-flask"></i></button>
+
+<button onclick="openModal('j2')"><i class="fa-solid fa-book-open"></i></button>
+
+<button onclick="openModal('j3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+
+<button onclick="openModal('j4')"><i class="fa-solid fa-globe"></i></button>
+
+</div>
+
+</div>
+
+<!-- RUDA -->
+
+<div class="card">
+
+<img src="ruda.jpg">
+
+<h2>Ruda</h2>
+
+<p class="scientific">Ruta graveolens</p>
+
+<p class="mazahua">Ruda</p>
+
+<div class="icons">
+
+<button onclick="openModal('r1')"><i class="fa-solid fa-flask"></i></button>
+
+<button onclick="openModal('r2')"><i class="fa-solid fa-book-open"></i></button>
+
+<button onclick="openModal('r3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+
+<button onclick="openModal('r4')"><i class="fa-solid fa-globe"></i></button>
+
+</div>
+
+</div>
+
+<!-- MANZANILLA -->
+
+<div class="card">
+
+<img src="manzanilla.jpg">
+
+<h2>Manzanilla</h2>
+
+<p class="scientific">Matricaria chamomilla</p>
+
+<p class="mazahua">Manzanilla</p>
+
+<div class="icons">
+
+<button onclick="openModal('m1')"><i class="fa-solid fa-flask"></i></button>
+
+<button onclick="openModal('m2')"><i class="fa-solid fa-book-open"></i></button>
+
+<button onclick="openModal('m3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+
+<button onclick="openModal('m4')"><i class="fa-solid fa-globe"></i></button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ====================== MODALES JENGIBRE ====================== -->
+
+<div id="j1" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('j1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Planta herbácea perenne perteneciente a la familia Zingiberaceae. Posee un rizoma subterráneo aromático ampliamente utilizado en la medicina tradicional y la gastronomía.
+</div>
+</div>
+
+<div id="j2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('j2')">&times;</span>
+<h3>Descripción literaria</h3>
+El jengibre guarda en su raíz una chispa ardiente que despierta el cuerpo. Su aroma intenso recuerda la fuerza de la tierra húmeda después de la lluvia.
+</div>
+</div>
+
+<div id="j3" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('j3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se utiliza para aliviar náuseas, mejorar la digestión, reducir inflamaciones y fortalecer el sistema inmunológico.
+</div>
+</div>
+
+<div id="j4" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('j4')">&times;</span>
+<h3>Importancia cultural</h3>
+El jengibre, aunque de origen asiático, se ha integrado profundamente en la medicina tradicional y la vida cotidiana de muchas comunidades indígenas en México, incluyendo a los mazahuas del Estado de México y Michoacán. Su importancia cultural radica en su uso terapéutico arraigado en la etnobotánica local.
+</div>
+</div>
+<!-- ====================== MODALES RUDA ====================== -->
+
+<div id="r1" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('r1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+La ruda es un arbusto aromático perteneciente a la familia Rutaceae, conocido por sus hojas verde azuladas y su fuerte aroma característico.
+</div>
+</div>
+
+<div id="r2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('r2')">&times;</span>
+<h3>Descripción literaria</h3>
+La ruda crece firme bajo el sol, como una guardiana antigua de los jardines. Su aroma profundo evoca historias transmitidas de generación en generación.
+</div>
+</div>
+
+<div id="r3" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('r3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se emplea tradicionalmente para aliviar dolores digestivos, cólicos y mejorar la circulación.
+</div>
+</div>
+
+<div id="r4" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('r4')">&times;</span>
+<h3>Importancia cultural</h3>
+En muchas comunidades se considera una planta protectora contra energías negativas.
+</div>
+</div>
+
+<!-- ====================== MODALES MANZANILLA ====================== -->
+
+<div id="m1" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+La manzanilla es una planta herbácea de la familia Asteraceae reconocida por sus pequeñas flores blancas con centro amarillo.
+</div>
+</div>
+
+<div id="m2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m2')">&times;</span>
+<h3>Descripción literaria</h3>
+Pequeñas flores blancas se abren como soles diminutos en los campos. Su fragancia suave transmite calma y serenidad.
+</div>
+</div>
+
+<div id="m3" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se utiliza en infusión para aliviar problemas digestivos, cólicos, estrés y promover la relajación.
+</div>
+</div>
+
+<div id="m4" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('m4')">&times;</span>
+<h3>Importancia cultural</h3>
+Es una de las plantas medicinales más utilizadas en los hogares para preparar remedios tradicionales.
+</div>
+</div>
+
+<script>
+
+function openModal(id){
+document.getElementById(id).style.display="flex";
+}
+
+function closeModal(id){
+document.getElementById(id).style.display="none";
+}
+
+window.onclick=function(e){
+
+let modals=document.querySelectorAll(".modal");
+
+modals.forEach(modal=>{
+if(e.target==modal){
+modal.style.display="none";
+}
+});
+
+}
+
+</script>
+<script>
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+</body>
+</html>

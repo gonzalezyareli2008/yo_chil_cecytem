@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YO CHIL - Plantas Relajantes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Inter',sans-serif;
+
+/* IMAGEN DE FONDO LOCAL */
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg"); /* ← cambia la ruta a tu imagen */
+
+/* AJUSTES */
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:#1f2933;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:#1f2933;
+}
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+z-index:1000;
+}
+
+.logo{
+font-size:26px;
+font-weight:700;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-size:14px;
+padding:6px 10px;
+border-radius:8px;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+/* TITULO */
+
+.titulo{
+text-align:center;
+margin-top:120px;
+padding:0 20px;
+font-family:'Playfair Display',serif;
+font-size:clamp(50px,7vw,70px);
+color:#1d3415;
+position:relative;
+display:block;
+letter-spacing:1px;
+text-shadow:0 4px 12px rgba(0,0,0,0.1);
+animation:fadeUp 1s ease;
+}
+
+.titulo::after{
+content:"";
+display:block;
+width:60%;
+height:4px;
+margin:10px auto 0;
+background:linear-gradient(90deg,#2d6a4f,#52b788);
+border-radius:10px;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* TARJETAS */
+
+.card{
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.card h2{
+margin-top:10px;
+font-size:20px;
+}
+
+.scientific{
+font-style:italic;
+color:#555;
+font-size:14px;
+}
+
+.mazahua{
+color:#2f7a4d;
+font-size:14px;
+margin-bottom:10px;
+}
+/* ICONOS */
+
+.icons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.icons button{
+background:#e6f0e9;
+border:none;
+padding:10px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.icons button:hover{
+background:#2f7a4d;
+color:white;
+}
+
+/* MODALES */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter: blur(4px);
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:2000;
+}
+
+.modal-content{
+background:linear-gradient(135deg,#ffffff,#f3fdf6);
+padding:30px;
+border-radius:20px;
+width:100%;
+max-width:650px;
+position:relative;
+text-align:justify;
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+animation:fadeIn .35s ease;
+border:2px solid #d4f2dc;
+}
+
+.modal h3{
+color:#2f7a4d;
+margin-bottom:10px;
+font-size:22px;
+border-bottom:2px solid #d4f2dc;
+padding-bottom:5px;
+}
+
+.close{
+position:absolute;
+right:15px;
+top:10px;
+font-size:22px;
+cursor:pointer;
+background:#e6f0e9;
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+transition:.3s;
+}
+
+.close:hover{
+background:#2f7a4d;
+color:white;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:scale(0.9);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
+
+/* FOOTER */
+
+footer{
+width:100%;
+padding:30px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+margin-top:40px;
+}
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+}
+
+@media(max-width:600px){
+
+.titulo{
+font-size:42px;
+line-height:1.2;
+}
+
+.titulo::after{
+width:80%;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="logo">YO CHIL</div>
+
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+
+</nav>
+
+<section class="header">
+
+<div class="header-box">
+
+<h1 class="titulo">Plantas Relajantes</h1>
+
+<div class="grid">
+
+<!-- VALERIANA -->
+<div class="card">
+<img src="valeriana.jfif">
+<h2>Valeriana</h2>
+<p class="scientific">Valeriana officinalis</p>
+<p class="mazahua">Rátsi</p>
+
+<div class="icons">
+<button onclick="openModal('v1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('v2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('v3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('v4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- MANZANILLA -->
+<div class="card">
+<img src="manzanilla.jpg">
+<h2>Manzanilla</h2>
+<p class="scientific">Matricaria chamomilla</p>
+<p class="mazahua">Manzanilla</p>
+
+<div class="icons">
+<button onclick="openModal('m1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('m2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('m3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('m4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- CEDRON -->
+<div class="card">
+<img src="cedron.jpg">
+<h2>Cedrón</h2>
+<p class="scientific">Aloysia citriodora</p>
+<p class="mazahua">Cedrón</p>
+
+<div class="icons">
+<button onclick="openModal('c1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('c2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('c3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('c4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- HIERBA BUENA -->
+<div class="card">
+<img src="WhatsApp Image 2026-03-11 at 20.12.10.jpeg">
+<h2>Hierba Buena</h2>
+<p class="scientific">Mentha spp.</p>
+<p class="mazahua">Hierba buena</p>
+
+<div class="icons">
+<button onclick="openModal('h1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('h2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('h3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('h4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- MENTA -->
+<div class="card">
+<img src="WhatsApp Image 2026-03-11 at 20.41.15.jpeg">
+<h2>Menta</h2>
+<p class="scientific">Mentha spp.</p>
+<p class="mazahua">Minta</p>
+
+<div class="icons">
+<button onclick="openModal('me1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('me2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('me3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('me4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+</div>
+
+<!-- MODALES VALERIANA -->
+<div id="v1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('v1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Planta herbácea perenne con flores blancas o rosadas y un rizoma aromático.
+</div></div>
+
+<div id="v2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('v2')">&times;</span>
+<h3>Descripción literaria</h3>
+La valeriana es como un refugio silencioso en medio de la noche. Su presencia evoca descanso, calma y serenidad, como si la naturaleza misma ofreciera un susurro que invita al cuerpo a relajarse y a la mente a encontrar paz después de un día agitado.
+</div></div>
+
+<div id="v3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('v3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se usa para tratar ansiedad, insomnio y tensión nerviosa.
+</div></div>
+
+<div id="v4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('v4')">&times;</span>
+<h3>Importancia cultural</h3>
+Considerada una planta vinculada al descanso y al bienestar.
+</div></div>
+
+<!-- MODALES MANZANILLA -->
+
+<div id="m1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Planta herbácea anual de la familia Asteraceae con flores blancas y amarillas.
+</div></div>
+
+<div id="m2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m2')">&times;</span>
+<h3>Descripción literaria</h3>
+La manzanilla es una flor pequeña que guarda una gran suavidad. Su aroma delicado recuerda a los campos tranquilos donde sopla una brisa tibia, transmitiendo una sensación de calma, consuelo y cuidado natural.</div></div>
+</div>
+</div>
+<div id="m3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m3')">&times;</span>
+<h3>Usos medicinales</h3>
+Alivia estrés, ansiedad y problemas digestivos.
+</div></div>
+
+<div id="m4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('m4')">&times;</span>
+<h3>Importancia cultural</h3>
+Muy utilizada en infusiones tradicionales en muchas culturas.
+</div></div>
+
+<!-- MODALES CEDRON -->
+
+<div id="c1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('c1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Arbusto aromático de la familia Verbenaceae con aroma a limón.
+</div></div>
+
+<div id="c2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('c2')">&times;</span>
+<h3>Descripción literaria</h3>
+El cedrón desprende un perfume fresco que parece acariciar el aire. Sus hojas alargadas guardan un aroma cítrico y suave que transmite tranquilidad, como si cada hoja llevara consigo la frescura de la mañana y la calma del campo.</div></div>
+</div>
+</div>
+<div id="c3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('c3')">&times;</span>
+<h3>Usos medicinales</h3>
+Usado para calmar nervios, estrés y problemas digestivos.
+</div></div>
+
+<div id="c4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('c4')">&times;</span>
+<h3>Importancia cultural</h3>
+Muy popular en infusiones tradicionales sudamericanas.
+</div></div>
+
+<!-- MODALES HIERBA BUENA -->
+
+<div id="h1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('h1')">&times;</span>
+<h3>Definición científica</h3>
+Planta herbácea aromática de la familia Lamiaceae.
+</div></div>
+
+<div id="h2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('h2')">&times;</span>
+<h3>Descripción literaria</h3>
+La hierba buena es un soplo fresco de la naturaleza; sus hojas aromáticas despiertan los sentidos y traen consigo la sensación de calma y alivio. Su fragancia recuerda a los jardines húmedos después de la lluvia, donde el aire se llena de vida y serenidad.
+</div></div>
+
+<div id="h3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('h3')">&times;</span>
+<h3>Usos medicinales</h3>
+Ayuda con digestión, náuseas y dolores de cabeza.
+</div></div>
+
+<div id="h4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('h4')">&times;</span>
+<h3>Importancia cultural</h3>
+Usada en muchas culturas como símbolo de hospitalidad.
+</div></div>
+
+<!-- MODALES MENTA -->
+
+<div id="me1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('me1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Planta herbácea aromática del género Mentha.
+</div></div>
+
+<div id="me2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('me2')">&times;</span>
+<h3>Descripción literaria</h3>
+La menta es como un susurro verde que refresca el cuerpo y el espíritu. Su aroma intenso y limpio parece recorrer el aire como una brisa ligera, dejando una sensación de claridad, vitalidad y renovación.</div></div>
+</div>
+</div>
+<div id="me3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('me3')">&times;</span>
+<h3>Usos medicinales</h3>
+Alivia problemas digestivos y dolores de cabeza.
+</div></div>
+
+<div id="me4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('me4')">&times;</span>
+<h3>Importancia cultural</h3>
+Muy valorada en la medicina tradicional y en la cocina.
+</div></div>
+
+<script>
+
+function openModal(id){
+document.getElementById(id).style.display="flex";
+}
+
+function closeModal(id){
+document.getElementById(id).style.display="none";
+}
+
+window.onclick=function(e){
+
+let modals=document.querySelectorAll(".modal");
+
+modals.forEach(modal=>{
+if(e.target==modal){
+modal.style.display="none";
+}
+});
+
+}
+
+</script>
+<script>
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+</body>
+</html>

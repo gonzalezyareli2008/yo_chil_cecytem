@@ -1,0 +1,581 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YO CHIL - Plantas Antiinflamatorias</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+
+/* IMAGEN DE FONDO LOCAL */
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg"); /* ← cambia la ruta a tu imagen */
+
+/* AJUSTES */
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:#1f2933;
+}
+
+body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+main{
+flex:1;
+display:block;
+}
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:18px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+box-shadow:0 8px 25px rgba(0,0,0,0.08);
+z-index:100;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:30px;
+font-weight:700;
+letter-spacing:3px;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+font-size:15px;
+padding:6px 10px;
+border-radius:8px;
+transition:.25s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+/* TITULO */
+
+.titulo{
+text-align:center;
+margin-top:120px;
+padding:0 20px;
+font-family:'Playfair Display',serif;
+font-size:clamp(50px,7vw,70px);
+color:#1d3415;
+letter-spacing:1px;
+text-shadow:0 4px 12px rgba(0,0,0,0.1);
+animation:fadeUp 1s ease;
+}
+
+.titulo::after{
+content:"";
+display:block;
+width:60%;
+height:4px;
+margin:10px auto 0;
+background:linear-gradient(90deg,#2d6a4f,#52b788);
+border-radius:10px;
+}
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+padding:20px;
+}
+
+/* TARJETAS */
+
+.card{
+background:white;
+border-radius:20px;
+padding:15px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:15px;
+}
+
+.card h2{
+font-size:20px;
+margin-top:10px;
+}
+
+.scientific{
+font-size:14px;
+}
+
+.mazahua{
+font-size:14px;
+}
+
+/* ICONOS */
+
+.icons{
+display:flex;
+justify-content:center;
+gap:10px;
+margin-top:10px;
+flex-wrap:wrap;
+}
+
+.icons button{
+background:#e6f0e9;
+border:none;
+padding:12px;
+border-radius:10px;
+cursor:pointer;
+font-size:18px;
+transition:.3s;
+}
+
+.icons button:hover{
+background:#2f7a4d;
+color:white;
+}
+
+/* MODALES */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter: blur(4px);
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:2000;
+}
+
+.modal-content{
+background:linear-gradient(135deg,#ffffff,#f3fdf6);
+padding:30px;
+border-radius:20px;
+width:100%;
+max-width:650px;
+position:relative;
+text-align:justify;
+box-shadow:0 20px 40px rgba(0,0,0,0.25);
+animation:fadeIn .35s ease;
+border:2px solid #d4f2dc;
+}
+
+.modal h3{
+color:#2f7a4d;
+margin-bottom:10px;
+font-size:22px;
+border-bottom:2px solid #d4f2dc;
+padding-bottom:5px;
+}
+
+.close{
+position:absolute;
+right:15px;
+top:10px;
+font-size:22px;
+cursor:pointer;
+background:#e6f0e9;
+width:35px;
+height:35px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+transition:.3s;
+}
+
+.close:hover{
+background:#2f7a4d;
+color:white;
+}
+/* FOOTER */
+
+footer{
+margin-top:auto;
+padding:40px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+}
+@media(max-width:600px){
+
+.titulo{
+font-size:42px;
+line-height:1.2;
+}
+
+.titulo::after{
+width:80%;
+}
+
+}
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#1b521f;
+flex-direction:column;
+align-items:center;
+gap:15px;
+padding:20px 0;
+display:none;
+}
+
+nav ul.active{
+display:flex;
+}
+
+}
+section{
+flex:1;
+}
+html, body{
+height:100%;
+}
+html, body{
+height:100%;
+}
+
+body{
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+main{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.header{
+flex:1;
+}
+</style>
+</head>
+
+<body>
+
+
+<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<div class="logo">YO CHIL</div>
+
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+
+</nav>
+<main>
+<section class="header">
+<div class="header-box">
+
+<h1 class="titulo">Plantas Antiinflamatorias</h1>
+
+<div class="grid">
+
+<!-- ARNICA -->
+
+<div class="card">
+<img src="arnica.jpg">
+<h2>Árnica</h2>
+<p class="scientific">Arnica montana</p>
+<p class="mazahua">Ts'opa</p>
+
+<div class="icons">
+<button onclick="openModal('a1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('a2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('a3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('a4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- JENGIBRE -->
+
+<div class="card">
+<img src="WhatsApp Image 2026-03-11 at 20.49.37.jpeg">
+<h2>Jengibre</h2>
+<p class="scientific">Zingiber officinale</p>
+<p class="mazahua">Rátsi picante</p>
+
+<div class="icons">
+<button onclick="openModal('j1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('j2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('j3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('j4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- ROMERO -->
+
+<div class="card">
+<img src="WhatsApp Image 2026-03-11 at 20.38.41.jpeg">
+<h2>Romero</h2>
+<p class="scientific">Rosmarinus officinalis</p>
+<p class="mazahua">Romero</p>
+
+<div class="icons">
+<button onclick="openModal('r1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('r2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('r3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('r4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- SABILA -->
+
+<div class="card">
+<img src="sabila.jpeg">
+<h2>Sábila</h2>
+<p class="scientific">Aloe vera</p>
+<p class="mazahua">Zábila</p>
+
+<div class="icons">
+<button onclick="openModal('s1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('s2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('s3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('s4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+</div>
+
+<!-- NOPAL -->
+
+<div class="card">
+<img src="WhatsApp Image 2026-03-11 at 20.07.08.jpeg">
+
+<h2>Nopal</h2>
+
+<p class="scientific">Opuntia spp.</p>
+
+<p class="mazahua">Xoconostle / Nopal</p>  <!-- 👈 AQUÍ VA -->
+
+<div class="icons">
+<button onclick="openModal('n1')"><i class="fa-solid fa-flask"></i></button>
+<button onclick="openModal('n2')"><i class="fa-solid fa-book-open"></i></button>
+<button onclick="openModal('n3')"><i class="fa-solid fa-mortar-pestle"></i></button>
+<button onclick="openModal('n4')"><i class="fa-solid fa-globe"></i></button>
+</div>
+
+</div>
+
+
+<!-- MODALES ARNICA -->
+
+<div id="a1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a1')">&times;</span>
+<h3>Lenguaje denotativo </h3>
+Planta herbácea de la familia Asteraceae conocida por sus flores amarillas intensas y por contener compuestos antiinflamatorios naturales.
+</div></div>
+
+<div id="a2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a2')">&times;</span>
+<h3>Descripción literaria</h3>
+Como un pequeño sol nacido de la montaña, el árnica guarda en sus pétalos dorados la promesa del alivio y la recuperación.
+</div></div>
+
+<div id="a3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('a3')">&times;</span>
+<h3>Usos medicinales</h3>
+Utilizada en pomadas para aliviar golpes, contusiones e inflamaciones musculares.
+</div></div>
+
+<div id="a4" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('a4')">&times;</span>
+
+<h3>Importancia cultural</h3>
+El árnica es ampliamente utilizada en comunidades rurales e indígenas de México como remedio tradicional para golpes y dolores. 
+Su uso ha sido transmitido de generación en generación, formando parte importante de la medicina herbolaria popular.
+</div>
+</div>
+<!-- MODALES JENGIBRE -->
+
+<div id="j1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('j1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Planta tropical cuyo rizoma contiene compuestos bioactivos como el gingerol, conocidos por sus propiedades antiinflamatorias.
+</div></div>
+
+<div id="j2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('j2')">&times;</span>
+<h3>Descripción literaria</h3>
+Raíz ardiente de la tierra, el jengibre despierta los sentidos y recuerda la energía que la naturaleza guarda en sus profundidades.
+</div></div>
+
+<div id="j3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('j3')">&times;</span>
+<h3>Usos medicinales</h3>
+Utilizado en infusiones para reducir inflamaciones, mejorar la digestión y aliviar dolores musculares.
+</div></div>
+
+<div id="j4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('j4')">&times;</span>
+<h3>Importancia cultural</h3>
+El jengibre, aunque de origen asiático, se ha integrado profundamente en la medicina tradicional y la vida cotidiana de muchas comunidades indígenas en México, incluyendo a los mazahuas del Estado de México y Michoacán. Su importancia cultural radica en su uso terapéutico arraigado en la etnobotánica local.
+</div></div>
+
+
+<!-- MODALES ROMERO -->
+
+<div id="r1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('r1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Arbusto aromático mediterráneo rico en aceites esenciales con propiedades antioxidantes y antiinflamatorias.
+</div></div>
+
+<div id="r2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('r2')">&times;</span>
+<h3>Descripción literaria</h3>
+El romero es memoria verde del paisaje; su aroma parece despertar recuerdos antiguos y claridad en la mente.
+</div></div>
+
+<div id="r3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('r3')">&times;</span>
+<h3>Usos medicinales</h3>
+Ayuda a mejorar la circulación, aliviar dolores musculares y estimular la concentración.
+</div></div>
+
+<div id="r4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('r4')">&times;</span>
+<h3>Importancia cultural</h3>
+El romero ha sido utilizado desde la antigüedad como símbolo de memoria, protección y purificación. 
+En diversas culturas forma parte de rituales tradicionales y remedios caseros, especialmente en limpias y preparados medicinales.
+</div></div>
+
+<!-- MODALES SABILA -->
+
+<div id="s1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Planta suculenta cuyas hojas contienen un gel con propiedades cicatrizantes y antiinflamatorias.
+</div></div>
+
+<div id="s2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s2')">&times;</span>
+<h3>Descripción literaria</h3>
+Dentro de sus hojas espinosas vive un cristal vegetal que simboliza la curación y la serenidad.
+</div></div>
+
+<div id="s3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se emplea para tratar quemaduras, irritaciones y procesos inflamatorios de la piel.
+</div></div>
+
+<div id="s4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('s4')">&times;</span>
+<h3>Importancia cultural</h3>
+La sábila es considerada una planta protectora en muchos hogares mexicanos. 
+Se coloca comúnmente en entradas como símbolo de buena energía, además de ser un recurso medicinal esencial en la vida cotidiana.
+</div></div>
+
+
+<!-- MODALES NOPAL -->
+
+<div id="n1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n1')">&times;</span>
+<h3>Lenguaje denotativo</h3>
+Cactus originario de América rico en antioxidantes y compuestos antiinflamatorios.
+</div></div>
+
+<div id="n2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n2')">&times;</span>
+<h3>Descripción literaria</h3>
+El nopal crece donde la tierra parece más dura, recordando que incluso en la sequía la vida encuentra fuerza para florecer.
+</div></div>
+
+<div id="n3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n3')">&times;</span>
+<h3>Usos medicinales</h3>
+Se utiliza para regular la glucosa, reducir inflamaciones y mejorar la digestión.
+</div></div>
+
+<div id="n4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('n4')">&times;</span>
+<h3>Importancia cultural</h3>
+El nopal es un símbolo nacional de México y un elemento fundamental en la cultura mazahua. 
+Representa resistencia, vida y sustento, siendo clave en la alimentación, medicina tradicional y economía local.
+</div></div>
+</div>
+
+</div> <!-- 👈 AGREGA -->
+</section> <!-- 👈 AGREGA -->
+
+<script>
+
+function openModal(id){
+document.getElementById(id).style.display="flex";
+}
+
+function closeModal(id){
+document.getElementById(id).style.display="none";
+}
+
+window.onclick=function(e){
+
+let modals=document.querySelectorAll(".modal");
+
+modals.forEach(modal=>{
+if(e.target==modal){
+modal.style.display="none";
+}
+});
+
+}
+
+</script>
+<script>
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+</script>
+</main>
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+</body>
+</html>
+```

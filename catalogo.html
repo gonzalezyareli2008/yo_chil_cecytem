@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Catálogo · Yo Chil</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Inter',sans-serif;
+
+/* IMAGEN DE FONDO LOCAL */
+background:
+linear-gradient(rgba(125, 174, 129, 0.65), rgba(171, 230, 175, 0.65)),
+url("FONDO.jpg"); /* ← cambia la ruta a tu imagen */
+
+/* AJUSTES */
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:#1f2933;
+}
+
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+z-index:1000;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:26px;
+font-weight:700;
+letter-spacing:2px;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+font-size:14px;
+padding:6px 10px;
+border-radius:8px;
+transition:.25s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+/* HEADER */
+.header{
+padding:140px 5% 70px 5%;
+text-align:center;
+}
+
+.header h1{
+font-family:'Playfair Display',serif;
+font-size:55px;
+color:#1b4332;
+margin-bottom:20px;
+}
+
+.header p{
+max-width:700px;
+margin:auto;
+font-size:18px;
+line-height:1.7;
+color:#4a5d52;
+text-align:justify;
+}
+
+/* CATALOGO */
+.catalogo{
+padding:40px 5% 120px 5%;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+}
+
+/* TARJETAS */
+
+.card{
+position:relative;
+background:white;
+border-radius:22px;
+padding:45px 35px;
+box-shadow:
+0 10px 25px rgba(0,0,0,0.06),
+0 0 0 1px rgba(46,125,50,0.08),
+0 0 35px rgba(46,125,50,0.18);
+transition:all .4s ease;
+cursor:pointer;
+overflow:hidden;
+}
+@media(max-width:600px){
+
+.grid{
+gap:25px;
+}
+
+.card{
+padding:30px 20px;
+}
+
+.card h3{
+font-size:20px;
+}
+
+.card p{
+font-size:14px;
+}
+
+}
+/* brillo verde */
+
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(80,200,120,0.35),
+transparent
+);
+opacity:0;
+transition:.5s;
+}
+
+.card:hover::before{
+opacity:1;
+}
+
+.card:hover{
+transform:translateY(-12px) scale(1.03);
+box-shadow:
+0 20px 45px rgba(0,0,0,0.1),
+0 0 40px rgba(52,146,82,0.35);
+}
+
+/* ICONO */
+
+.icon{
+text-align: center;
+font-size:52px;
+margin-bottom:20px;
+color:#2d6a4f;
+animation:leafFloat 4s ease-in-out infinite;
+}
+
+@keyframes leafFloat{
+
+0%{transform:translateY(0) rotate(0deg)}
+50%{transform:translateY(-8px) rotate(4deg)}
+100%{transform:translateY(0) rotate(0deg)}
+
+}
+
+/* TITULOS */
+
+.card h3{
+font-family:'Playfair Display',serif;
+font-size:24px;
+color:#2d6a4f;
+margin-bottom:14px;
+text-align:center;
+}
+
+/* TEXTO */
+
+.card p{
+font-size:15px;
+line-height:1.6;
+color:#5a6d63;
+text-align:justify;
+}
+
+/* FOOTER */
+
+footer{
+width:100%;
+padding:30px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+margin-top:40px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.header h1{
+font-size:40px;
+}
+
+.header p{
+font-size:16px;
+}
+
+}
+.header-box{
+max-width:800px;
+margin:auto;
+padding:40px 35px;
+
+/* efecto vidrio */
+background:rgba(255, 255, 255, 0.826);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+/* sombra elegante */
+box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+/* borde sutil */
+border:1px solid rgba(255, 255, 255, 0.76);
+}
+body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+.catalogo{
+flex:1;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">YO CHIL</div>
+
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+
+</nav>
+
+<section class="header">
+
+<div class="header-box">
+
+<h1>Catálogo de plantas medicinales</h1>
+
+<p>
+El herbario digital Yo Chil reúne conocimientos tradicionales sobre plantas medicinales
+utilizadas en la comunidad. A través de esta clasificación es posible explorar diferentes
+especies según sus propiedades terapéuticas, su importancia cultural y su uso dentro de la
+medicina tradicional.
+</p>
+
+</div>
+
+</section>
+
+<section class="catalogo">
+
+<div class="grid">
+
+<div class="card" onclick="location.href='digestivas.html'">
+<div class="icon">🌿</div>
+<h3>Plantas digestivas</h3>
+<p>
+Especies utilizadas para aliviar molestias del estómago, mejorar la digestión y reducir
+síntomas digestivos.
+</p>
+</div>
+
+<div class="card" onclick="location.href='respiratorias.html'">
+<div class="icon">🍃</div>
+<h3>Plantas respiratorias</h3>
+<p>
+Plantas empleadas para tratar tos, bronquitis y problemas de las vías respiratorias.
+</p>
+</div>
+
+<div class="card" onclick="location.href='relajantes.html'">
+<div class="icon">🌱</div>
+<h3>Plantas relajantes</h3>
+<p>
+Hierbas que ayudan a reducir el estrés, promover la relajación y mejorar el descanso.
+</p>
+</div>
+
+<div class="card" onclick="location.href='antiinflamatorias.html'">
+<div class="icon">🌿</div>
+<h3>Plantas antiinflamatorias</h3>
+<p>
+Especies utilizadas para aliviar inflamaciones, dolores musculares y molestias físicas.
+</p>
+</div>
+
+<div class="card" onclick="location.href='piel.html'">
+<div class="icon">🍃</div>
+<h3>Cuidado de la piel</h3>
+<p>
+Plantas utilizadas para tratar heridas, quemaduras e irritaciones en la piel.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+
+</body>
+</html>

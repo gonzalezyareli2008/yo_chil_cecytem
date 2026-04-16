@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yo Chil</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Inter',sans-serif;
+background:#1b521f; /* ← VERDE */
+color:#1f2933;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+.hero{
+background:linear-gradient(120deg,#f4f8f3,#e6f0e8);
+flex:1; /* ← ESTO ES CLAVE */
+}
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:linear-gradient(90deg,#1b521f,#349252,#1b521f);
+z-index:1000;
+}
+
+.logo{
+font-family:'Playfair Display',serif;
+font-size:26px;
+font-weight:700;
+letter-spacing:2px;
+color:white;
+}
+
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+font-weight:500;
+font-size:14px;
+padding:6px 10px;
+border-radius:8px;
+transition:.25s;
+}
+
+nav a:hover{
+background:rgba(255,255,255,0.18);
+}
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1.1fr 1fr;
+align-items:center;
+padding:120px 8% 60px 8%;
+background:linear-gradient(120deg,#f4f8f3,#e6f0e8);
+}
+
+.hero h1{
+font-family:'Playfair Display',serif;
+font-size:clamp(55px,6vw,90px);
+line-height:1.05;
+color:#1b4332;
+margin-bottom:25px;
+}
+
+.hero p{
+font-size:18px;
+max-width:420px;
+line-height:1.6;
+color:#4a5d52;
+margin-bottom:35px;
+}
+
+.buttons{
+display:flex;
+gap:18px;
+}
+
+.btn{
+padding:15px 30px;
+border-radius:40px;
+font-size:14px;
+font-weight:600;
+border:none;
+cursor:pointer;
+}
+
+.primary{
+background:#2d6a4f;
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.secondary{
+background:white;
+color:#2d6a4f;
+border:1px solid #d9e4dd;
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+position:relative;
+display:flex;
+justify-content:center;
+}
+
+.hero-image img{
+width:100%;
+max-width:520px;
+border-radius:20px;
+box-shadow:0 30px 60px rgba(0,0,0,0.25);
+transition:.4s;
+}
+
+.hero-image img:hover{
+transform:scale(1.02);
+}
+.leaf{
+position:absolute;
+width:120px;
+opacity:.8;
+}
+
+.leaf1{top:-40px;right:-20px}
+.leaf2{bottom:-40px;left:-20px}
+
+/* FOOTER */
+
+footer{
+width:100%;
+padding:30px 15px;
+background:#1b521f;
+color:white;
+text-align:center;
+font-size:14px;
+margin-top:auto;
+}
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+padding:140px 6% 60px 6%;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+margin:auto auto 35px;
+}
+
+.buttons{
+justify-content:center;
+}
+
+.hero-image{
+margin-top:40px;
+}
+
+.hero-image img{
+width:85%;
+}
+
+nav{
+padding:16px 6%;
+}
+
+nav ul{
+gap:20px;
+}
+
+.logo{
+font-size:26px;
+}
+
+}
+@media(max-width:600px){
+
+nav{
+flex-direction:column;
+gap:10px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+.hero div:first-child{
+max-width:500px;
+}
+}
+.btn{
+transition:.3s ease;
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.03);
+box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div class="logo">YO CHIL</div>
+<ul>
+<li><a href="index.html">Inicio</a></li>
+<li><a href="catalogo.html">Glosario</a></li>
+<li><a href="proyecto.html">Proyecto</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+
+<div>
+<h1>Naturaleza y saber tradicional de San José del Rincón</h1>
+<p>
+Explora plantas medicinales y conocimiento comunitario en un herbario digital.
+</p>
+
+<div class="buttons">
+<button class="btn primary" onclick="location.href='catalogo.html'">
+Explorar plantas
+</button>
+<button class="btn secondary" onclick="location.href='proyecto.html'">
+Sobre el proyecto
+</button>
+</div>
+
+</div>
+
+<div class="hero-image">
+<img src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2019/08/Depositphotos_12109628_xl-2015-1024x683.jpg">
+</div>
+</section>
+
+<footer>
+Proyecto Yo Chil · Herbario digital
+</footer>
+
+</body>
+</html>
