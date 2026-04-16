@@ -201,20 +201,17 @@ width:85%;
 }
 }
 
-/* CELULAR */
-@media(max-width:768px){
+/*celular*/
+  @media(max-width:768px){
 
 .menu-toggle{
 display:block;
 }
 
-nav{
-flex-direction:row;
-}
-
+/* ESTO EVITA QUE EL MENU EMPUJE EL NAV */
 nav ul{
 position:absolute;
-top:70px;
+top:100%;
 left:0;
 width:100%;
 background:#1b521f;
@@ -222,31 +219,18 @@ flex-direction:column;
 align-items:center;
 gap:15px;
 padding:20px 0;
+
+/* 🔥 CLAVE */
 display:none;
 }
-
+.menu-toggle{
+margin-left:auto;
+}
+/* cuando se abre */
 nav ul.active{
 display:flex;
 }
 }
-
-/* CELULAR PEQUEÑO */
-@media(max-width:600px){
-
-nav{
-flex-direction:row; /* 👈 se mantiene horizontal */
-}
-
-nav ul{
-flex-wrap:wrap;
-justify-content:center;
-}
-
-.hero div:first-child{
-max-width:500px;
-}
-}
-
 </style>
 </head>
 
